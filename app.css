@@ -1,0 +1,33 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+.back-button {
+    display: none;
+}
+
+.gallery {
+    position: relative;
+}
+
+.image-holder {
+    /* Simple hack to keep a 1:1 aspect ratio */
+    padding-top: 100%;
+}
+
+.image-holder img {
+    width: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    position: absolute;
+}
+
+.thumbnail-container img {
+    width: 33%;
+    float: left;
+}
