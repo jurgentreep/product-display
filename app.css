@@ -2,13 +2,20 @@
     box-sizing: border-box;
 }
 
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
 body {
-    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font-family: sans-serif;
     margin: 0;
 }
 
-.back-button {
-    display: none;
+main {
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
 .gallery {
@@ -37,4 +44,128 @@ body {
 .thumbnail-container img {
     width: 33%;
     float: left;
+    cursor: pointer;
+}
+
+.navigation-bar {
+    background: #c33ec3;
+    height: 50px;
+    color: white;
+}
+
+.navigation-bar .container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.navigation-bar h1 {
+    margin: 0;
+    font-size: 1.2em;
+    line-height: 50px;
+    display: inline-block;
+}
+
+.back-button {
+    display: inline-block;
+    opacity: 0;
+    border: none;
+    background: none;
+    line-height: 50px;
+    vertical-align: top;
+    padding: 0 15px;
+    text-transform: uppercase;
+    font-size: 0.8em;
+    color: white;
+    cursor: pointer;
+}
+
+.product-list {
+    margin: 0;
+    padding: 0;
+}
+
+.product-list li {
+    display: inline-block;
+    width: 50%;
+    padding: 15px;
+    vertical-align: top;
+    cursor: pointer;
+}
+
+.product-list li img {
+    width: 100%;
+    transition: transform 200ms;
+}
+
+.product-list li:hover img {
+    transform: scale(1.1);
+}
+
+.product-list li h2 {
+    font-size: 0.8em;
+    margin: 0 6px;
+    position: relative;
+}
+
+.product-list li:hover h2,
+.product-list li:hover span  {
+    text-decoration: underline;
+}
+
+.product-list li span {
+    font-size: 0.8em;
+    margin: 0 6px;
+}
+
+.product-info {
+    padding: 0 15px;
+}
+
+.product-info h1 {
+    font-size: 1.4em;
+}
+
+.product-info h2 {
+    font-size: 1em;
+    margin-bottom: 0;
+}
+
+.product-info p {
+    margin-top: 0;
+    font-size: 0.9em;
+}
+
+.product-info button {
+    width: 100%;
+    font-size: 1em;
+    line-height: 3em;
+    border: none;
+    background: #c33ec3;
+    border-radius: 3px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+@media (min-width: 600px) {
+    .product-list li {
+        width: 33.33%;
+    }
+
+    .gallery-container {
+        width: 50%;
+        float: left;
+    }
+
+    .product-info {
+        width: 50%;
+        padding: 60px 30px;
+        float: left;
+    }
+}
+
+@media (min-width: 1000px) {
+    .product-list li {
+        width: 25%;
+    }
 }

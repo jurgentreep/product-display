@@ -24,11 +24,11 @@ function createListItem(product) {
     var thumbnail = document.createElement('img');
     thumbnail.src = product.images[0].thumb;
 
-    var title = document.createElement('strong');
+    var title = document.createElement('h2');
     title.textContent = product.title;
 
     var price = document.createElement('span');
-    price.textContent = product.price;
+    price.textContent = '€ ' + product.price;
 
     listItem.appendChild(thumbnail)
     listItem.appendChild(title)
@@ -78,37 +78,72 @@ function hideProductList() {
 }
 
 function showBackButton() {
-    backButtonElement.style.display = 'initial';
+    backButtonElement.style.opacity = 1;
 }
 
 function hideBackButton() {
-    backButtonElement.style.display = 'none';
+    backButtonElement.style.opacity = 0;
 }
 
 function renderProduct(product) {
     var container = document.createElement('div');
     container.className = 'product-detail';
 
+    var galleryContainer = document.createElement('div');
+    galleryContainer.className = 'gallery-container';
+
     var gallery = createGallery(product.images);
-    container.appendChild(gallery);
+    galleryContainer.appendChild(gallery);
 
     var thumbnails = createThumbnails(product.images);
-    container.appendChild(thumbnails);
-    
+    galleryContainer.appendChild(thumbnails);
+
+    container.appendChild(galleryContainer);
+
+    var productInfo = createProductInfo(product);
+    container.appendChild(productInfo);
+
+    productElement = container;
+    mainElement.appendChild(container);
+}
+
+function createProductInfo(product) {
+    var container = document.createElement('div');
+    container.className = 'product-info';
+
     var title = document.createElement('h1');
     title.textContent = product.title;
     container.appendChild(title);
+
+    var priceTitle = document.createElement('h2');
+    priceTitle.textContent = 'Price';
+    container.appendChild(priceTitle);
+
+    var priceParagraph = document.createElement('p');
+    priceParagraph.textContent = '€' + product.price;
+    container.appendChild(priceParagraph);
+
+    var buy = document.createElement('button');
+    buy.textContent = 'Buy now';
+    container.appendChild(buy);
+
+    var descriptionTitle = document.createElement('h2');
+    descriptionTitle.textContent = 'Description';
+    container.appendChild(descriptionTitle);
 
     var descriptionParagraph = document.createElement('p');
     descriptionParagraph.textContent = product.description;
     container.appendChild(descriptionParagraph);
 
+    var specificationTitle = document.createElement('h2');
+    specificationTitle.textContent = 'Specification';
+    container.appendChild(specificationTitle);
+
     var specificationParagraph = document.createElement('p');
     specificationParagraph.textContent = product.specification;
     container.appendChild(specificationParagraph);
 
-    productElement = container;
-    mainElement.appendChild(container);
+    return container;
 }
 
 function createGallery(images) {
@@ -126,7 +161,7 @@ function createGallery(images) {
         if (index === 0) {
             imageElement.className = 'active';
         }
-        
+
         galleryImageElements.push(imageElement);
         imageHolder.appendChild(imageElement);
     });
@@ -138,7 +173,7 @@ function createGallery(images) {
 
 function createThumbnails(images) {
     var container = document.createElement('div');
-    container.className = 'thumbnail-container';
+    container.className = 'thumbnail-container clearfix';
 
     images.forEach(function(image, index) {
         var imageElement = document.createElement('img');

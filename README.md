@@ -21,3 +21,9 @@ First I thought there wouldn't be much logic and I could keep it all in one java
 ### 2018-03-31 15:40:00 - 2018-03-31 16:15:00
 * Make the gallery work
 * Style using css
+
+### 2018-03-31 16:15:00 - 2018-03-31 18:00:00
+* Style the whole thing
+
+### future
+* Split code up in different files and make objects which provide functionality
