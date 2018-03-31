@@ -147,6 +147,11 @@ main {
     cursor: pointer;
 }
 
+.error-message {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
 @media (min-width: 600px) {
     .product-list li {
         width: 33.33%;
@@ -167,5 +172,10 @@ main {
 @media (min-width: 1000px) {
     .product-list li {
         width: 25%;
+    }
+
+    .error-message {
+        margin-left: 0;
+        margin-right: 0;
     }
 }

@@ -25,5 +25,9 @@ First I thought there wouldn't be much logic and I could keep it all in one java
 ### 2018-03-31 16:15:00 - 2018-03-31 18:00:00
 * Style the whole thing
 
+### 2018-03-31 18:00:00 - 2018-03-31 18:20:00
+* Display error message when products fail to load
+
 ### future
+* Show loader while the products are being fetched
 * Split code up in different files and make objects which provide functionality

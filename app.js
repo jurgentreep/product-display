@@ -43,7 +43,7 @@ function getProducts(callback) {
         if (this.readyState === 4 && this.status === 200) {
             productList = JSON.parse(this.responseText);
             callback(productList);
-        } else {
+        } else if (this.readyState === 4 && this.status !== 200) {
             displayError();
         }
     };
@@ -204,7 +204,10 @@ function goBack() {
 }
 
 function displayError() {
-    // TODO: Display error
+    var errorMessage = document.createElement('p');
+    errorMessage.className = 'error-message';
+    errorMessage.innerHTML = 'Something went wrong while trying to load the products please try refreshing the page and if the problem persists please contact <a href="mailto:info@nerfgunexpress.com">info@nerfgunexpress.com</a>.';
+    mainElement.appendChild(errorMessage);
 }
 
 function initialize() {
