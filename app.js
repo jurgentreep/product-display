@@ -3,6 +3,7 @@ var mainElement = document.querySelector('main');
 var productListElement = null;
 var backButtonElement = document.querySelector('.back-button');
 var productElement = null;
+var galleryImageElements = [];
 
 function renderProductList(productList) {
     var list = productListElement = document.createElement('ul');
@@ -117,9 +118,16 @@ function createGallery(images) {
     var imageHolder = document.createElement('div');
     imageHolder.className = 'image-holder';
 
-    images.forEach(function(image) {
+    galleryImageElements = [];
+    images.forEach(function(image, index) {
         var imageElement = document.createElement('img');
         imageElement.src = image.original;
+
+        if (index === 0) {
+            imageElement.className = 'active';
+        }
+        
+        galleryImageElements.push(imageElement);
         imageHolder.appendChild(imageElement);
     });
 
@@ -132,13 +140,26 @@ function createThumbnails(images) {
     var container = document.createElement('div');
     container.className = 'thumbnail-container';
 
-    images.forEach(function(image) {
+    images.forEach(function(image, index) {
         var imageElement = document.createElement('img');
         imageElement.src = image.thumb;
+        imageElement.dataset.index = index;
+
+        imageElement.addEventListener('click', showImage);
+
         container.appendChild(imageElement);
     });
 
     return container;
+}
+
+function showImage(event) {
+    galleryImageElements.forEach(function(imageElemnt) {
+        // The following will not work in EI9 but I'm not sure how many browsers I want to support
+        imageElemnt.classList.remove('active');
+    });
+
+    galleryImageElements[event.currentTarget.dataset.index].className = 'active';
 }
 
 function goBack() {

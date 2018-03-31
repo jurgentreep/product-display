@@ -17,3 +17,7 @@ First I thought there wouldn't be much logic and I could keep it all in one java
 * Render html for product detail
 * Add a little css to put the images on top of each other so we can animate them later
 * Switch between the two different views
+
+### 2018-03-31 15:40:00 - 2018-03-31 16:15:00
+* Make the gallery work
+* Style using css
